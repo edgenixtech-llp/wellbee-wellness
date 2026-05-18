@@ -15,6 +15,7 @@
 - [Architecture](#architecture)
 - [Development](#development)
 - [Building for Production](#building-for-production)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -25,8 +26,8 @@
 - ⚡ **Lightning Fast** - Built with Vite for instant HMR and optimized builds
 - 🔧 **Component-Based** - Modular, reusable React components
 - 📱 **Responsive** - Mobile-first design that works on all devices
-- 🎯 **Type-Safe** - Full TypeScript support for reliability
-- 🧪 **Linting** - ESLint configured with React best practices
+- 🧩 **Component-Based JSX** - Simple React section components
+- 🧪 **Linting Script** - ESLint dependencies are present, but a config file still needs to be added before `npm run lint` works
 - ♿ **Accessible** - Built with accessibility in mind
 - 🚀 **Production Ready** - Optimized builds and deployment ready
 
@@ -69,10 +70,10 @@ npm run build
 # Preview production build locally
 npm run preview
 
-# Run ESLint to check code quality
+# Run ESLint after adding an ESLint config
 npm run lint
 
-# Fix ESLint issues automatically
+# Fix ESLint issues automatically after adding an ESLint config
 npm run lint -- --fix
 ```
 
@@ -80,57 +81,24 @@ npm run lint -- --fix
 
 ```
 wellbee-wellness/
-├── public/                 # Static assets
-│   ├── favicon.svg
-│   └── ...
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── DEPLOYMENT.md
+│   └── SETUP.md
+├── index.html             # Root Vite entry for repo-root deployments
+├── package.json
+├── package-lock.json
 ├── src/
-│   ├── assets/            # Images, fonts, styles
-│   │   ├── images/
-│   │   ├── fonts/
-│   │   └── styles/
-│   ├── components/        # Reusable React components
-│   │   ├── common/        # Shared/common components
-│   │   ├── layout/        # Layout components
-│   │   ├── dashboard/     # Dashboard-specific components
-│   │   └── ...
-│   ├── pages/             # Page components
-│   │   ├── Home.jsx
-│   │   ├── Dashboard.jsx
-│   │   └── ...
-│   ├── hooks/             # Custom React hooks
-│   │   ├── useAuth.js
-│   │   ├── useFetch.js
-│   │   └── ...
-│   ├── utils/             # Utility functions
-│   │   ├── api.js
-│   │   ├── helpers.js
-│   │   ├── validators.js
-│   │   └── ...
-│   ├── services/          # API and external services
-│   │   ├── authService.js
-│   │   ├── healthService.js
-│   │   └── ...
-│   ├── context/           # React Context for state management
-│   │   ├── AuthContext.jsx
-│   │   ├── HealthContext.jsx
-│   │   └── ...
-│   ├── App.jsx            # Root component
-│   ├── App.css            # Global styles
-│   └── main.jsx           # Entry point
-├── docs/                  # Documentation
-│   ├── ARCHITECTURE.md    # Architecture overview
-│   ├── API.md             # API documentation
-│   ├── COMPONENTS.md      # Component documentation
-│   └── DEPLOYMENT.md      # Deployment guide
-├── .eslintrc.cjs          # ESLint configuration
-├── vite.config.js         # Vite configuration
-├── index.html             # HTML template
-├── package.json           # Dependencies and scripts
-├── package-lock.json      # Locked dependency versions
-├── README.md              # This file
-├── CONTRIBUTING.md        # Contributing guidelines
-├── LICENSE                # MIT License
-└── .gitignore             # Git ignore rules
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.html         # Vite entry for Vercel projects using src as root
+│   ├── vite.config.js     # Vite config for src-root deployments
+│   ├── vercel.json
+│   ├── useScrollReveal.js
+│   ├── *.jsx              # Section components
+│   └── *.css              # Component and global styles
+├── vercel.json
+└── vite.config.js
 ```
 
 ## 🏗️ Architecture
@@ -149,8 +117,8 @@ wellbee-wellness/
 └─────────────────────────────────────────┘
                     ↓
 ┌─────────────────────────────────────────┐
-│      Development & Linting              │
-│  ESLint • React Rules • Type Checking   │
+│      Development Tooling                │
+│  React Refresh • ESLint dependency      │
 └─────────────────────────────────────────┘
                     ↓
 ┌─────────────────────────────────────────┐
@@ -159,51 +127,27 @@ wellbee-wellness/
 └─────────────────────────────────────────┘
 ```
 
-### Data Flow Architecture
+### Runtime Flow
 
 ```
-┌──────────────┐
-│  React UI    │
-│  Components  │
-└──────┬───────┘
-       │
-       ↓
-┌──────────────────────┐
-│  Custom Hooks &      │
-│  Context API State   │
-└──────┬───────────────┘
-       │
-       ↓
-┌──────────────────────┐
-│  Service Layer       │
-│  (API Calls)         │
-└──────┬───────────────┘
-       │
-       ↓
-┌──────────────────────┐
-│  Backend API         │
-│  (Healthcare Data)   │
-└──────────────────────┘
+index.html
+  -> src/main.jsx
+    -> src/App.jsx
+      -> page sections
 ```
 
 ### Component Hierarchy
 
 ```
 App
-├── Layout
-│   ├── Navbar
-│   ├── Sidebar
-│   └── Footer
-├── Pages
-│   ├── HomePage
-│   ├── DashboardPage
-│   │   ├── HealthMetrics
-│   │   ├── ActivityTracker
-│   │   └── Appointments
-│   └── ProfilePage
-└── ContextProviders
-    ├── AuthContext
-    └── HealthContext
+├── Navbar
+├── Hero
+├── Services
+├── About
+├── Therapies
+├── Testimonials
+├── Booking
+└── Footer
 ```
 
 ## 🛠️ Development
@@ -229,10 +173,10 @@ App
 ### Code Quality
 
 ```bash
-# Run linting
+# Run linting after adding an ESLint config
 npm run lint
 
-# Fix linting issues
+# Fix linting issues after adding an ESLint config
 npm run lint -- --fix
 ```
 
@@ -240,7 +184,7 @@ npm run lint -- --fix
 
 1. Create a feature branch: `git checkout -b feature/feature-name`
 2. Make your changes
-3. Run linting: `npm run lint -- --fix`
+3. Run `npm run build`
 4. Commit changes: `git commit -m "feat: add feature"`
 5. Push to branch: `git push origin feature/feature-name`
 6. Open a Pull Request
@@ -267,16 +211,11 @@ This command:
 npm run preview
 ```
 
-### Deployment
+## Deployment
 
-The `dist/` folder is ready for deployment to:
-- **Netlify** - Drag and drop deployment
-- **Vercel** - Optimized React hosting
-- **GitHub Pages** - Static hosting
-- **AWS S3** - Cloud storage
-- **Docker** - Containerized deployment
+Vercel is the active deployment target. The build output is `dist/`.
 
-See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed instructions.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for current Vercel settings and the deployment recovery report.
 
 ## 🤝 Contributing
 
@@ -327,15 +266,19 @@ rm -rf .vite
 #### Build Fails
 
 ```bash
-# Run linting to identify issues
-npm run lint
-
-# Fix issues automatically
-npm run lint -- --fix
-
-# Try building again
+# Build from the repo root
 npm run build
 ```
+
+#### Blank Page on Vercel
+
+Check `vite.config.js`. For Vercel domain deployments, the base path must default to `/`:
+
+```js
+base: process.env.VITE_BASE_PATH || "/"
+```
+
+If it points to `/wellbee-wellness`, deployed HTML will request missing assets under `/wellbee-wellness/assets/...`.
 
 ### Getting Help
 

@@ -87,17 +87,18 @@ npm run dev
 ```
 wellbee-wellness/
 ├── node_modules/           # All dependencies (3000+ files)
+├── index.html              # Root Vite entry
 ├── src/
-│   ├── components/         # React components
-│   ├── pages/             # Page components  
 │   ├── App.jsx            # Root component
-│   └── main.jsx           # Entry point
-├── public/                # Static assets
+│   ├── main.jsx           # Entry point
+│   ├── index.html         # Entry for src-root Vercel project
+│   ├── useScrollReveal.js # Shared scroll reveal hook
+│   ├── *.jsx              # Section components
+│   └── *.css              # Component/global styles
 ├── dist/                  # Build output (created after npm run build)
 ├── package.json           # Dependencies and scripts
 ├── package-lock.json      # Dependency lock file
 ├── vite.config.js         # Vite configuration
-├── index.html             # HTML template
 ├── README.md              # Project documentation
 └── .gitignore             # Git ignore rules
 ```
@@ -134,10 +135,10 @@ npm run preview
 ### Code Quality
 
 ```bash
-# Run linting to check code quality
+# Run linting after adding an ESLint config
 npm run lint
 
-# Fix linting issues automatically
+# Fix linting issues automatically after adding an ESLint config
 npm run lint -- --fix
 ```
 
@@ -242,11 +243,12 @@ npm run dev
 
 1. **Explore the Project**
    - Check out `src/App.jsx`
-   - Look at components in `src/components/`
+   - Look at the flat section components in `src/`
 
 2. **Read Documentation**
    - [README.md](../README.md) - Overview
    - [ARCHITECTURE.md](ARCHITECTURE.md) - System design
+   - [DEPLOYMENT.md](DEPLOYMENT.md) - Vercel deployment settings and recovery notes
    - [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guide
 
 3. **Start Developing**
