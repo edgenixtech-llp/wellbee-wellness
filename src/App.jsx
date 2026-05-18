@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import About from './components/About';
-import Therapies from './components/Therapies';
-import Testimonials from './components/Testimonials';
-import Booking from './components/Booking';
-import Footer from './components/Footer';
-import { useScrollReveal } from './hooks/useScrollReveal';
+import React from 'react';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Services from './Services';
+import About from './About';
+import Therapies from './Therapies';
+import Testimonials from './Testimonials';
+import Booking from './Booking';
+import Footer from './Footer';
+import { useScrollReveal } from './useScrollReveal';
 
 function App() {
   const revealRef = useScrollReveal();
