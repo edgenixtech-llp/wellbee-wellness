@@ -9,5 +9,5 @@ export default defineConfig({
       '/api': 'http://localhost:8000'
     }
   },
-  base: process.env.VITE_BASE_PATH || "/wellbee-wellness"
+  base: process.env.VITE_BASE_PATH || "/"
 })
