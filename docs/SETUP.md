@@ -28,12 +28,14 @@ git --version
 ### Step 1: Clone the Repository
 
 ```bash
-# Clone from GitHub
-git clone https://github.com/edgenixtech-llp/wellbee-wellness.git
+# Clone from GitHub using the Edgenix Tech LLP SSH alias
+git clone git@github-edgenixtech-llp:edgenixtech-llp/wellbee-wellness.git
 
 # Navigate to project directory
 cd wellbee-wellness
 ```
+
+The `github-edgenixtech-llp` SSH host alias should be configured locally to use the Edgenix Tech LLP key. This keeps pushes for this repo on the company GitHub account without making it the default identity for all GitHub repositories.
 
 ### Step 2: Install Dependencies
 

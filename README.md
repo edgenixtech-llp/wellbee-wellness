@@ -43,9 +43,11 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/edgenixtech-llp/wellbee-wellness.git
+   git clone git@github-edgenixtech-llp:edgenixtech-llp/wellbee-wellness.git
    cd wellbee-wellness
    ```
+
+   The `github-edgenixtech-llp` SSH host alias should point to the Edgenix Tech LLP GitHub key, so pushes use the company account without changing the machine's default GitHub identity.
 
 2. **Install dependencies**
    ```bash
@@ -160,7 +162,7 @@ App
 
 2. **Clone and Setup**
    ```bash
-   git clone https://github.com/edgenixtech-llp/wellbee-wellness.git
+   git clone git@github-edgenixtech-llp:edgenixtech-llp/wellbee-wellness.git
    cd wellbee-wellness
    npm install
    ```
