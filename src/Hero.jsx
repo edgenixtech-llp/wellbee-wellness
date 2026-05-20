@@ -42,7 +42,7 @@ const Hero = () => {
           </p>
           <div className="hero-ctas reveal fade-up" style={{ animationDelay: '0.3s' }}>
             <a href="#booking" className="btn btn-primary cta-glow-btn">Begin Your Journey</a>
-            <a href="#services" className="btn btn-outline">Explore Services</a>
+            <a href="#therapies" className="btn btn-outline">Explore Therapies</a>
           </div>
         </div>
 

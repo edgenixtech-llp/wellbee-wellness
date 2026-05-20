@@ -26,7 +26,6 @@ const Navbar = () => {
         
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
           <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#therapies" onClick={() => setMobileMenuOpen(false)}>Therapies</a>
           <a href="#testimonials" onClick={() => setMobileMenuOpen(false)}>Testimonials</a>
